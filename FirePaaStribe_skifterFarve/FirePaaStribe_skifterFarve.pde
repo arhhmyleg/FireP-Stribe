@@ -1,7 +1,7 @@
 int board [][] = new int [6][8]; //array for spillepladen 8x8 = y*x
 int cellWidth, cellHeight; //funktioner for spillepladen
 int player = 1; //den starter med player 1
-
+//hej din spiller
 color green = color(0,255,0); //farver til spillerne
 color yellow = color(255,255,0); // farver til spillerne
 color red = color(255,0,0); //farver til spillerne
