@@ -1,5 +1,5 @@
 int h = 6, w = 8;
-int board [][] = new int [h][w]; //array for spillepladen 8x8 = y*x
+int board [][] = new int [h][w]; //array for spillepladen 6x8 = y*x
 int cellWidth, cellHeight; //funktioner for spillepladen
 
 int player = 1; //den starter med player 1
@@ -22,7 +22,9 @@ int nextSpace(int x) {
 }
 
 void restart(){
-
+  for (int y = 0; y < h; y++)
+  for (int x = 0; x < w; x++)
+  board[y][x] =0;
   player = 1;
   
 }
@@ -32,7 +34,12 @@ void draw(){
   if(vinder() == 0){
 
   }
-  else{fill(255);textSize(60);text("Player "+vinder()+ " wins. Mellemrum restarter", width/10, height/2);
+  else{
+    tint(255,127);
+    rect(500,500,width/2,height/2);
+    fill(255);
+    textSize(60);
+    text("Player "+vinder()+ " wins. Mellemrum restarter", width/10, height/2);
 if(keyPressed && key == ' ' ){
  restart(); 
 }
