@@ -7,6 +7,7 @@ int player = 1; //den starter med player 1
 color green = color(0,255,0); //farver til spillerne
 color yellow = color(255,255,0); // farver til spillerne
 color red = color(255,0,0); //farver til spillerne
+color orange = color(255,165,0);
 
 void setup(){
   size(1200,840); //størelsen på skærmen
@@ -35,13 +36,16 @@ void draw(){
 
   }
   else{
-    tint(255,127);
-    rect(500,500,width/2,height/2);
+    fill(0,175);
+    rect(width/10,height/2.3,1025,65);
     fill(255);
     textSize(60);
     text("Player "+vinder()+ " wins. Mellemrum restarter", width/10, height/2);
 if(keyPressed && key == ' ' ){
  restart(); 
+}
+if(keyPressed && key == ENTER){
+ drawBoard(); 
 }
 }
 }
@@ -67,7 +71,8 @@ void drawBoard() {
     for (int col=0;col<8;col++){// den laver felterne uden at tegne dem på x-aksen
       fill(0,0,255); //hvis den ikke er der, farver den hele spillepladen
         rect(col * cellWidth, row * cellHeight, cellWidth, cellHeight);
-        fill(255);
+        
+        fill(100);
         ellipse(col * cellWidth + 10, w * cellHeight + 10, cellWidth - 20, cellHeight - 20);
           
 
@@ -83,36 +88,12 @@ void drawBoard() {
         fill(red); //den farver rød
         ellipse(col * cellWidth + 10, row * cellHeight + 10, cellWidth - 20, cellHeight - 20); 
         //den tegner en firkant inde i cellen og maler den rød
-   
-  
-    
-     /* rect(col * cellWidth, row * cellHeight, cellWidth, cellHeight);
-      fill(255);
-      ellipse(col * cellWidth, row * cellHeight, cellWidth, cellHeight);*/
-      // den optegner felter på spillepladen, så man kan se hvor de er
-
-    }
+    }else if (board[row][col] == 4){ //hvis det er spiller 4
+        fill(orange); //den farver orange
+        ellipse(col * cellWidth + 10, row * cellHeight + 10, cellWidth - 20, cellHeight - 20); 
     }
   }
-//Brug denne til mere end fire spillere
-
-  /*switch (board[row][col]) {// ligesom if else, den kan bare skifte mellem 
-    case 1: //hvis det er spiller 1
-      fill(green); //den farver grøn
-      rect(col * cellWidth, row * cellHeight, cellWidth, cellHeight); 
-      //den tegner en firkant inde i cellen og maler den grøn
-      break;
-      case 2: //hvis der er spiller 2
-      fill(yellow); //den farver gul
-      rect(col * cellWidth, row * cellHeight, cellWidth, cellHeight);
-      //den tegner en firkant inde i cellen og maler den gul
-      break;
-      case 3:
-      fill(red);
-      rect(col * cellWidth, row * cellHeight, cellWidth, cellHeight);
-      break;
-  }
-} */
+}
 }
 //Skifter spiller og farve i forhold til vinderen
 void playerMove() { 
