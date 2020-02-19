@@ -1,6 +1,7 @@
+
 void board(){
   drawBoard(); 
-  
+
   if(vinder() == 0){
 
   }
@@ -17,6 +18,7 @@ if(keyPressed && key == ' ' ){
      drawBoard(); 
   }
 }
+
 }
 
 int nextSpace(int x) {
@@ -27,7 +29,7 @@ int nextSpace(int x) {
 void restart(){
   for (int y = 0; y < h; y++)
   for (int x = 0; x < w; x++)
-  board[y][x] =0;
+  board[y][x] = 0;
   player = 1;
   
 }
@@ -37,7 +39,7 @@ void mousePressed() { //en funktion som bruges at at bestemme om musen er klikke
     
 }
 
-boolean highlight ( int x, int y, int w, int h){
+/*boolean highlight ( int x, int y, int w, int h){
   println(x);
   if(mouseX < x+w && mouseX >x && mouseY< y+h && mouseY >y){
     return(true);
@@ -45,16 +47,16 @@ boolean highlight ( int x, int y, int w, int h){
     return(false);
   }
   
-}
+}*/
 
 void drawBoard() {
-  for (int row=0;row<6;row++){ // den laver felterne uden at tegne dem på y-aksen
-    for (int col=0;col<8;col++){// den laver felterne uden at tegne dem på x-aksen
-      fill(0,0,255); //hvis den ikke er der, farver den hele spillepladen
+  for (int row=0;row<h;row++){ // den laver felterne uden at tegne dem på y-aksen
+    for (int col=0;col<w;col++){// den laver felterne uden at tegne dem på x-aksen
+       fill(0,0,255); //hvis den ikke er der, farver den hele spillepladen
         rect(col * cellWidth, row * cellHeight, cellWidth, cellHeight);
-        fill(100);
-        ellipse(col * cellWidth + 10, w * cellHeight + 10, cellWidth - 20, cellHeight - 20);
-          
+        fill(255);
+        ellipse(col * cellWidth + 10, row * cellHeight + 10, cellWidth - 20, cellHeight - 20);
+        vinder=vinder();
 
       if (board[row][col] == 1) { //hvis det er spiller 1
         fill(green); //den farver grøn
@@ -74,23 +76,42 @@ void drawBoard() {
     }
   }
 }
+  
 }
 //Skifter spiller og farve i forhold til vinderen
 void playerMove() { 
-  
+  if(vinder == 0){
   int x = int(mouseX / cellWidth), y = nextSpace(x);
-  if(y>=0 && state == 1){
+  if(y>=0 && state == 1 || state == 2 || state == 3){
     board[y][x] = player;
-    
+    if(state == 1){
     //Brug denne for 2 spillere
     player = player == 1?2:1;
-   
+    }if(state == 2){
    
     //Brug denne for 3 spillere
-    /*if(player == 1 && mousePressed){
+    if(player == 1 && mousePressed){
      player = 2;}
-     else { player = player == 2?3:1; }*/
+     else { player = player == 2?3:1; }
+     
+    }
+    if(state == 3){
+   
+    //Brug denne for 4 spillere
+    if(player == 1 && mousePressed){
+     player = 2; 
+     
+   } else if(player == 2 && player < 5){
+     player++;
+ }else if(player == 3 && player < 5){
+  player++; 
+ }else if(player == 4 && player < 5){
+   player = 1;
+ }
   }
+  }
+  }
+
 }
 
 //p bruges i udregningen af vinder
@@ -129,3 +150,4 @@ int vinder(){
   
   
   }
+  
