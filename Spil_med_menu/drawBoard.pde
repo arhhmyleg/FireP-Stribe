@@ -79,7 +79,7 @@ void drawBoard() {
 void playerMove() { 
   
   int x = int(mouseX / cellWidth), y = nextSpace(x);
-  if(y>=0){
+  if(y>=0 && state == 1){
     board[y][x] = player;
     
     //Brug denne for 2 spillere
