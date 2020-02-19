@@ -6,9 +6,15 @@ void Menu() {
 
 
 
+
   float dis1 = dist(width/2,400,mouseX,mouseY);
   float dis2 = dist(width/2,560,mouseX,mouseY);
   float dis3 = dist(width/2,720,mouseX,mouseY);
+
+  //dis1 = dist(width/2,400,mouseX,mouseY);
+  dis2 = dist(width/2,560,mouseX,mouseY);
+  dis3 = dist(width/2,720,mouseX,mouseY);
+
   
   fill(0);
   text("Menu", 360,200);
@@ -40,16 +46,20 @@ void Menu() {
     rect2 = color(128,90,70);}
     if (dis2 < 100 && mousePressed){
       state = 2;
+    }
   } else {
     rect2 = color(99,52,36);
     println(1);
   }
  if (dis3 < 100){
     rect3 = color(128,90,70);
+    if (dis3 < 100){
+      state = 3;
+    }
   } else {
     rect3 = color(99,52,36);
   }
-  }
+
   
 
 

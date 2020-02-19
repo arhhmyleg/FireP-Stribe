@@ -5,8 +5,8 @@ color rect1 = color(99,52,36);
 color rect2 = color(99,52,36);
 color rect3 = color(99,52,36);
 //float dis1;
-//float dis2;
-//float dis3;
+float dis2;
+float dis3;
 
 //Til spillepladen
 int h = 6, w = 8;
@@ -37,6 +37,9 @@ void draw(){
  } 
  if (state == 1){
   board();
+ }
+ if (state == 2){
+   board();
  }
   
   
