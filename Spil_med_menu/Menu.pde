@@ -47,9 +47,9 @@ void Menu() {
     if (dis2 < 100 && mousePressed){
       state = 2;
     }
-  } else {
+   else {
     rect2 = color(99,52,36);
-    println(1);
+    //println(1);
   }
  if (dis3 < 100){
     rect3 = color(128,90,70);
@@ -61,7 +61,7 @@ void Menu() {
   }
 
   
-
+}
 
 
 
